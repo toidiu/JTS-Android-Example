@@ -4,7 +4,7 @@ import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.io.ParseException;
-import utils.AlertBounds;
+import utils.AOCBounds;
 
 import static utils.Stuff.printLog;
 
@@ -31,7 +31,7 @@ public class JtsTest {
 
     private static void nycAlerts() {
 
-        AlertBounds alertBounds = new AlertBounds(NYBIG);
+        AOCBounds alertBounds = new AOCBounds(NYBIG);
         boolean withinBoundning = alertBounds.isWithinBoundning(43d, -73d);
 
         printLog("Is it within bound: " + withinBoundning);

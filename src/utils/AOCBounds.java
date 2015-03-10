@@ -9,7 +9,7 @@ import com.vividsolutions.jts.geom.Point;
 /**
  * Created by toidiu on 3/9/15.
  */
-public class AlertBounds {
+public class AOCBounds {
 
     //---------Static
     private static GeometryFactory gf = new GeometryFactory();
@@ -19,12 +19,11 @@ public class AlertBounds {
     Double maxX;
     Double minY;
     Double maxY;
-    private Coordinate[] coordinateList;
     private Geometry convexHull;
     private Coordinate coorInstance = new Coordinate();
 
 
-    public AlertBounds(String aocString) {
+    public AOCBounds(String aocString) {
 
         convertStringToAOC(aocString);
     }
@@ -33,7 +32,7 @@ public class AlertBounds {
 
         String[] points = aocString.split(":");
 
-        coordinateList = new Coordinate[points.length];
+        Coordinate[] coordinateList = new Coordinate[points.length];
         for (int i = 0, pointsLength = points.length; i < pointsLength; i++) {
             String pt = points[i];
             String[] latLon = pt.split(",");
@@ -44,10 +43,6 @@ public class AlertBounds {
             coordinateList[i] = new Coordinate(x, y);
         }
 
-        calculateConvexHull();
-    }
-
-    private void calculateConvexHull() {
         Geometry aoc = gf.createLineString(coordinateList);
         convexHull = aoc.convexHull();
     }
